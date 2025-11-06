@@ -133,6 +133,7 @@ ge25519_multi_scalarmult_vartime_final(ge25519 *r, ge25519 *point, bignum256modm
 		flag >>= 1;
 
 	/* exponentiate */
+	flag >>= 1; // since *r = *p, pass the 1st iteration
 	for (;;) {
 		ge25519_double(r, r);
 		if (scalar[limb] & flag)
